@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Invoice-Template</title>
+
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500&family=Poppins:wght@100;300;600&family=Roboto:wght@500;700&display=swap');
+	</style>
+</head>
+<body style="font-family: sans-serif;">
+	<!-- Invoice wrapping -->
+	<div class="wrap" style="width: 800px;margin: 0 auto;background-image: url(bg_bird.png); background-position: center;background-size: 59%;background-repeat: no-repeat;">
+		<!-- Invoice header -->
+		<div class="invoide-header" style="padding-bottom: 10px; text-align: center;">
+			<div class="img-box">
+				<img src="Header LOGO.png" alt="header_logo" width="350">
+				<!-- <img src="01.png" alt="01" width="80">
+				<img src="02.png" alt="02" width="200" style="margin: 0px 50px 0px 35px">
+				<img src="03.png" alt="03" width="80"> -->
+			</div>
+			<div class="invoice-header-title" style="font-family: 'Hind Siliguri', sans-serif;margin-top: 7px;font-size: 30px;color: #006838; font-weight: 500;">
+				কারিগরি শিক্ষা বোর্ড কর্তৃক অনুমোদিত
+			</div>
+		</div>
+
+		<!-- Start invoice body -->
+		<div class="invoice-body" >
+			<div class="invoice-details" style="display: flex;justify-content: space-between;color: #454545e3; margin:20px 0px">
+
+				<!-- Invoice customer info -->
+				<div class="customer-info">
+					<h3 style="
+					font-size: 30px;
+					margin: 0px 0px 8px 0px;
+					color: #6eb232;
+					font-weight: 600;
+				">INVOICE</h3>
+					<strong>Student ID:</strong> <span>11595700</span> <br>
+					<strong style="
+					padding: 5px 0px;
+					display: inline-block;
+				">Student Name:</strong> <span>Md Junayed Hasan</span> <br>
+					<strong>Mobile Number:</strong> <span>8801915256423</span>
+				</div>
+				<div class="invoice-date">
+					<strong>Invoice No.</strong> <span>12345</span> <br>
+					<span class="date" style="
+					display: block;
+					text-align: right;
+					margin-top: 5px;
+				">23 May 2023</span>
+				</div>
+			</div>
+
+			<!-- Invoice course details -->
+			<div class="invoice-course-details">
+				<table style="border: 1px solid #6eb232;border-collapse: collapse; width: 100%;color: #454545e3;"> 
+					<caption style="
+					background: #6eb232;
+					padding: 5px 0px;
+					font-size: 20px;
+					color: #fff;
+					font-weight: 600;
+				">Course Details</caption>
+					<thead>
+						<tr>
+							<th style="border: 1px solid #6eb232; text-align: center;padding: 7px 0px;font-weight: 600;">Course Name</th>
+							<th style="border: 1px solid #6eb232; text-align: center; padding: 7px 0px;font-weight: 600;">Class Details</th>
+							<th style="border: 1px solid #6eb232; text-align: center; padding: 7px 0px;font-weight: 600;">Enrollment Date </th>
+							<th style="border: 1px solid #6eb232; text-align: center; padding: 7px 0px;font-weight: 600;">Regular Fees </th>
+							<th style="border: 1px solid #6eb232; text-align: center; padding: 7px 0px;font-weight: 600;">After Waiver </th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td style="border: 1px solid #6eb232; text-align: center;padding: 40px 0px;font-weight: 500;">Professional
+								Digital Marketing</td>
+							<td style="border: 1px solid #6eb232; text-align: center;padding: 40px 0px;font-weight: 500;">Level 01 = 16 Classes</td>
+							<td style="border: 1px solid #6eb232; text-align: center;padding: 40px 0px;font-weight: 500;">23 May 2023</td>
+							<td style="border: 1px solid #6eb232; text-align: center;padding: 40px 0px;font-weight: 500;">4,000.00</td>
+							<td style="border: 1px solid #6eb232; text-align: center;padding: 40px 0px;font-weight: 500;">3,000.00</td>
+						</tr>
+						<tr>
+							<td style="border: 1px solid #6eb232; text-align: center;padding: 40px 0px;font-weight: 500;">Professional
+								Digital Marketing</td>
+							<td style="border: 1px solid #6eb232; text-align: center;padding: 40px 0px;font-weight: 500;">Level 02 = 22 Classes </td>
+							<td style="border: 1px solid #6eb232; text-align: center;padding: 40px 0px;font-weight: 500;">23 May 2023</td>
+							<td style="border: 1px solid #6eb232; text-align: center;padding: 40px 0px;font-weight: 500;">5,000.00</td>
+							<td style="border: 1px solid #6eb232; text-align: center;padding: 40px 0px;font-weight: 500;">4,000.00</td>
+						</tr>
+						<tr>
+							<td colspan="3" style="border: 1px solid #6eb232; text-align: center;padding: 7px 0px;font-weight: 600;">Total</td>
+							<td style="border: 1px solid #6eb232; text-align: center;padding: 7px 0px;font-weight: 600;">9,000.00</td>
+							<td style="border: 1px solid #6eb232; text-align: center;padding: 7px 0px;font-weight: 600; background-color: #6eb232;color: #fff">7,000.00</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<!-- Signature box -->
+			<div class="signature-box" style="
+			display: flex;
+			justify-content: space-around;
+			margin: 80px 0px 20px;text-align: center;
+		">
+				<div>
+					<!-- <img src="" alt=""> -->
+					<div class="border" style="    width: 160px;
+					height: 1px;
+					background: #6f6f6f;
+					margin: 0 auto;"></div>
+					<span style="
+					display: block;
+					padding-top: 10px;
+					font-size: 15px;
+				">Managing Director</span>
+				</div>
+				<div>
+					<!-- <img src="" alt=""> -->
+					<div class="border" style="    width: 160px;
+					height: 1px;
+					background: #6f6f6f;
+					margin: 0 auto;"></div>
+					<span style="
+					display: block;
+					padding-top: 10px;
+					font-size: 15px;
+				">Manager</span>
+				</div>
+			</div>
+
+			<!-- Return policy -->
+			<div class="return-policy-box" style="font-size: 12px;">	
+
+				<div style="padding: 5px 5px 12px;border: 2px solid #6eb232;border-bottom: none;border-radius: 5px 5px 0px 0px;line-height: 20px;">
+					<strong style="color: red">Return Policy:</strong>
+					<strong>01, 7-Day Cash Return Policy:</strong> 7-day period from the date of purchase during which customers can request a return for
+					eligible courses. If you are not satisfied with the course, you may be eligible for a full refund of the purchase price. <strong>02, Refund Process:</strong> To
+					initiate a return, ustomers should contact IT Center Inc.'s customer support via email, phone, or an online support system. The customer
+					support team will guide you through the return process, verify eligibility, and initiate the refund if applicable. <strong>03, Exclusions:</strong> Certain courses
+					or services may not be eligible for a refund, such as courses that have already been completed or expired, personalized courses, or courses
+					that were part of a bundled deal with non-refundable items. <strong>04, Processing Time:</strong> After approval, refunds typically take a few business days
+					to be processed. The time it takes for the refunded amount to reflect in your account may vary depending on the payment method used
+					during the initial purchase
+				</div>
+				<div class="highlighted-policy" style="background: #494646;color: #ffffffd9;padding: 10px 2px;text-align: center;border-radius: 0px 0px 5px 5px;">
+					কোর্স এ এডমিশন নেওয়া টাই মুখ্য বিষয় নয়, মুখ্য বিষয় হলো এডমিশন নেওয়ার পর- ০১, সঠিক নিয়মে ক্লাস করা (অনলাইন ক্লাস হলে, মার্জিত পোশাকে ক্যামেরা
+					অন করে ভিডিওতে থাকা) ০২, হোম ওয়ার্ক / এসাইনমেন্ট সাবমিট করা ০৩, নিজে নিজে কাজ গুলো অনুশীলন করা এবং ০৪, সবসময় ব্যাচ ইনস্ট্রাক্টর / মেন্টর এর সাথে
+					যোগাযোগ রেখে সঠিক নির্দেশনা নিয়ে সময়ের সাথে সাথে নিজেকে আপডেট রাখা ও নির্দেশনা মোতাবেক দক্ষতা অর্জন করা।
+				</div>
+			</div>
+		</div>
+
+		<!-- Invoice footer -->
+		<div class="invoice-footer" style="
+		text-align: center;">
+			<div class="verified-logo" style="display: flex;align-items: center;justify-content: space-around;margin:18px 0px">
+				<img src="Fooder LOGO.png" alt="" width="500">
+			</div>
+
+			<div class="contact-dtl" style="
+			background: #6eb232;
+			padding: 5px 0px;
+			color: #fff;
+		">
+				ক্লাস সংক্রান্ত যেকোনো বিষয়ে সরাসরি কল করুন: ০১৯৫৮-৫৩৬৭৭১, ০১৭১৫-৯৮৯৫৯৫
+			</div>
+
+			<!-- Address -->
+			<div class="address" style="font-size: 12px;padding: 12px 0px 15px;">
+				L R Bhaban, 1/2 Outer Circular Road. Malibagh Chowrasta, Dhaka - 1217
+				<br>
+				Telephone: 02222228099, Hotline: 01957-300900, E-mail: support@abclit.com, Web: www.abclit.com\
+			</div>
+		</div>
+
+		<!-- Facebook group -->
+		<div class="invoice-footer-bottom" style="
+		display: flex;
+		justify-content: space-between;
+		background: #006838;
+		color: #fff;
+		font-size: 13px;
+		padding: 5px;
+	">
+			<span>
+				Join Our Student Support Group:
+			</span>
+			<span>
+				<img src="facebook.png" alt="facebook" width="10">
+				fb.com/groups/ssg.itabcl
+			</span>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print report with bg</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.3/css/bootstrap.min.css" integrity="sha512-oc9+XSs1H243/FRN9Rw62Fn8EtxjEYWHXRvjS43YtueEewbS6ObfXcJNyohjHqVKFPoXXUxwc+q1K7Dee6vv9g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            -webkit-print-color-adjust: exact !important;   /* Chrome, Safari 6 – 15.3, Edge */
+            print-color-adjust: exact !important;           /* Firefox 97+, Safari 15.4+ */
+            padding: 0px;
+            margin: 0px;
+        }
+        
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            font-family: sans-serif;
+            box-sizing: border-box;
+        }
+
+        .course_banner {
+            color: #ffff;
+            background-repeat: no-repeat;
+            background-position: center;
+            text-align: center;
+            padding: 35px 50px 0px;
+        }
+        .banner-title {
+            text-transform: uppercase;
+            font-size: 35px;
+            font-weight: 800;
+            margin-bottom: 40px;
+        }
+
+        .banner-title span {
+            color: #8ac53e;
+        }
+
+        .banner_content_left {
+            text-align: left;
+        }
+
+        .banner_content_left h3 {
+            color: #83bb3b;
+            font-weight: 700;
+        }
+
+        .banner_content_left p {
+            font-size: 14px;
+            line-height: 25px;
+        }
+
+        .banner_content_right.course-video {
+            width: 380px;
+            max-width: 100%;
+            margin: 0 auto;
+            height: 216px;
+            /* position: absolute; */
+            right: 45px;
+            margin-left: 65px;
+        }
+        .banner_content_right.course-video iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+        }
+        .video-title {
+            background: #16a85e;
+            margin-top: -8px;
+            padding: 10px 20px;
+            text-align: left;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .main-content {
+            padding: 25px 0px 0px;
+        }
+        .single-widget {
+            background: #fff;
+            border-radius: 15px;
+            padding: 20px 18px;
+            margin-bottom: 20px;
+            border: 1px solid #b0b7be;
+            box-shadow: 0px 0px 3px 0px #b0b7be4d;
+        }
+
+        .single-widget.widget-bg {
+            background: #1f3342;
+        }
+
+        .widget-wrap .widget-title{
+            color: #1f3342;
+            font-weight: 600;
+            font-size: 25px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        .widget-title-left {
+            margin-left: 15px;
+        }
+        .single-widget ul {
+            padding-left: 0;
+            list-style: none;
+            margin-bottom: 0px;
+        }
+
+        .single-widget ul li {
+            display: flex;
+            align-items: start;
+            gap: 10px;
+            color: #344558;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .single-widget ul li:last-child {
+            margin-bottom: 0px;
+        } 
+
+        .single-widget.widget-bg ul li {
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .card {
+            margin-bottom: 10px;
+            background: #edeff3;
+            border: none;
+            border-radius: 8px;
+        }
+        .card-header {
+            padding: 0px;
+            border: none;
+        }
+
+        .card-body {
+            padding: 10px 20px;
+        }
+        /* Style for the check icon */
+        .check-icon {
+            font-size: 10px;
+            color: #ffffff;
+            width: 5px;
+            height: 5px;
+            line-height: 5px;
+            background-color: #16a85e;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            padding: 7px;
+            margin-top: 3px;
+        }
+
+        .btn-link {
+            text-decoration: unset;
+            padding: 5px 10px 0px;
+            background-color: none;
+            color: #344558;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .btn-link:hover {
+            text-decoration: none;
+            color: inherit;
+        }
+        .btn-link.focus, .btn-link:focus {
+            text-decoration: unset;
+        }
+        .btn.focus, .btn:focus {
+           box-shadow: none;
+        }
+        .custom-right-arrow {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            background-color: transparent;
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            border-left: 12px solid green; /* You can change the color here */
+            transform: rotate(45deg);
+            margin-right: 5px; /* Optional margin for spacing */
+        }
+        svg {
+            width: 13px;
+            height: auto;
+        }
+
+        .card-body ul li {
+            align-items: center;
+            font-weight: 500;
+        }
+        .class_teacher_wrap {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .class_teacher_wrap img {
+            width: 20%;
+        }
+        .class_teacher_wrap div {
+            color: #5d5555;
+        }
+        .class_teacher_wrap div h6 {
+            font-weight: 600;
+            color: #344558;
+            font-size: 25px;
+        }
+        .class_teacher_wrap:last-child {
+            margin-bottom: 0px;
+        }
+        c {
+            margin-top: 50px;
+        }
+
+        .right_sidebar {
+            margin-top: 50px;
+        }
+
+        .right_sidebar .enroll_box {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+
+        .right_sidebar .enroll_box strong {
+            font-size: 32px;
+            color: #1f3342;
+        }
+
+        .right_sidebar .enroll_box button.enrool_btn {
+            
+            font-size: 22px;
+        }
+        .common_btn {
+            border: none;
+            background: #16a85e;
+            padding: 4px 0px 3px;
+            border-radius: 5px;
+            color: #fff;
+            font-weight: 600;
+            text-transform: uppercase;
+            width: 100%;
+        }
+        .class_details_box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            margin-left: 20px;
+            align-items: center;
+        }
+        .class_details_box img {
+            width: 18%;
+        }
+        .class_details_box.extra_margin_bottom {
+            margin-bottom: 30px;
+        }
+        .widget-title-desc {
+            color: #323030;
+            font-size: 14px;
+            line-height: 18px;
+        }
+        .contact {margin: 40px 0px 0px 7px;}
+
+        .contact h5 {
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .contact-box {
+            padding: 8px 18px 4px;
+            font-size: 18px;
+        }
+
+        /* @media (max-width: 1024px) {
+            .col-lg-4.content-sidebar {
+                flex: 0 0 41.666667%;
+                max-width: 41.666667%;
+            } 
+            .banner-title {
+                font-size: 29px;
+                margin-bottom: 25px;
+                line-height: normal;
+            }
+            .course_banner {
+                padding: 13px 30px;
+            }
+            .banner_content_right.course-video {
+                width: 100%;
+                height: 250px;
+                margin-left: 0px;
+            }
+            .main-content {
+                padding: 70px 0px 0px;
+            }
+            .widget-wrap .widget-title {
+                font-size: 23px;
+            }
+            .right_sidebar {
+                margin-top: 0px;
+            }
+            .class_details_box {
+                margin-left: 0px;
+                align-items: start;
+            }
+            .contact-box {
+                font-size: 14px;
+            }
+            .class_teacher_wrap {
+                flex-wrap: nowrap;
+            }
+        } */
+
+        @media (max-width: 767px) {
+            .course_banner {
+                padding: 25px 28px 0px;
+            } 
+            .banner-title {
+                line-height: normal;
+                font-size: 30px;
+            }
+            .banner_content_left h3 {
+                font-size: 23px;
+            }
+            .banner_content_left p {
+                line-height: 22px;
+            }
+            .banner_content_right.course-video {
+                margin-left: 0px;
+                width: 100%;
+            }
+            .main-content {
+                padding: 75px 0px 0px;
+            }
+            .right_sidebar {
+                margin-top: 5px;
+            }
+            .class_details_box {
+                margin-left: 0px;
+                align-items: start;
+            }
+            .widget-wrap .widget-title {
+                font-size: 20px;
+            }
+        }
+        
+        @media screen and (min-width: 280px) and (max-width: 480px) {
+            .banner-title {
+                line-height: normal;
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+            .course_banner {
+                padding: 25px 15px 0px;
+            }
+            .banner_content_left h3 {
+                font-size: 23px;
+            }
+            .banner_content_left p {
+                line-height: 22px;
+            }
+            .banner_content_right.course-video {
+                margin-left: 0px;
+                width: 100%;
+            }
+            .main-content {
+                padding: 75px 0px 0px;
+            }
+            .widget-wrap .widget-title {
+                font-size: 20px;
+                margin-left: 0px;
+            }
+            .right_sidebar {
+                margin-top: 5px;
+            }
+            .class_details_box {
+                margin-left: 20px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="course_banner" style="background-image: url('banner.jpg');">
+            <h2 class="banner-title">
+                Banking professionals <br>
+                Diploma exam crash course <span>(Live)</span>
+            </h2>
+            <div class="banner-content">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="banner_content_left">
+                            <h3>Bangladesh Bank</h3>
+                            <p>
+                                -এর Rule অনুযায়ী, ব্যাংকিং ক্যারিয়ারে প্রমোশন পেতে হলে, Banking Professionals Exam পাশ করা অত্যাবশ্যক। যারা JAIBB (Level-1) পরীক্ষায় অংশ নিবেন, তাদের জন্য IBB প্রদত্ত সিলেবাসের ৬টি সাবজেক্ট-এর পড়াশুনা এবং পূর্ণাঙ্গ পরীক্ষা প্রস্তুতি হবে ঘরে বসেই, লাইভ ক্লাসের মাধ্যমে, এবিসিএল আইটি এন্ড টেইনিং ইনস্টিটিউট এর Banking Professionals Exam Crash Course (LIVE)
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="banner_content_right course-video">
+                            <iframe class="responsive-iframe" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+                            <div class="video-title">
+                                Watch on Youtube
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Body -->
+        <div class="main-content">
+            <div class="row">
+                <div class="col-lg-7 col-md-7 col-sm-12">
+                    <div class="widget-wrap">
+                        
+                        <h4 class="widget-title widget-title-left">ফুল সিলেবাস কোর্সে যা যা থাকছে</h4>
+                        <div class="single-widget widget-bg">
+                            <ul>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div>
+                                    IBB 27 JAIBB (Banking Diploma) Exam এর জন্য ৬টি সাবজেক্টের পুর্নাঙ্গ প্রস্তুতি
+                                </li>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div>
+                                    ব্যাংকিং ডিপ্লোমা পরীক্ষায় আসা প্রতিটি সাবজেক্টের বিস্তারিত টপিকভিত্তিক লেসন
+                                </li>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div>
+                                    JAIBB (ব্যাংকিং ডিপ্লোমা) পরীক্ষার ধরন এবং যেভাবে প্রস্তুতি নেওয়ার কলাকৌশল
+                                </li>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div>
+                                    Banking Diploma পরীক্ষায় আসা প্রশ্নগুলোকে Strategically Secret
+                                </li>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div>
+                                    সহজ কৌশলে শেষ সময়ে দ্রুত রিভিশন
+                                </li>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div>
+                                    বিগত ৫ বছরের ব্যাংকিং ডিপ্লোমা প্রশ্ন ও উত্তর আলোচনা
+                                </li>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div>
+                                    বিভিন্ন Student-দের ভিন্ন ভিন্ন Problem Solving
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="single-widget">
+                            <h4 class="widget-title">What you learn</h4>
+                            <ul>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div> 
+                                    Python
+                                </li>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div> 
+                                    Flask
+                                </li>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div> 
+                                    Numpy
+                                </li>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div> 
+                                    Pandas
+                                </li>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div> 
+                                    Visualization
+                                </li>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div> 
+                                    Databases
+                                </li>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div> 
+                                    EDA
+                                </li>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div> 
+                                    Linear Algebra
+                                </li>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div> 
+                                    Statistic
+                                </li>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div> 
+                                    Machine Learning
+                                </li>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div> Deep Learning
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="single-widget">
+                            <h4 class="widget-title">Requirements</h4>
+                            <ul>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div> 
+                                    Python
+                                </li>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div> 
+                                    Flask
+                                </li>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div> 
+                                    Numpy
+                                </li>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div> 
+                                    Pandas
+                                </li>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div> 
+                                    Visualization
+                                </li>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div> 
+                                    Databases
+                                </li>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div> 
+                                    EDA
+                                </li>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div> 
+                                    Linear Algebra
+                                </li>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div> 
+                                    Statistic
+                                </li>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div> 
+                                    Machine Learning
+                                </li>
+                                <li>
+                                    <div class="check-icon"> &#10003;</div> Deep Learning
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="single-widget">
+                            <h4 class="widget-title">Course curriculum</h4>
+                            <div class="accordion" id="accordionExample">
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Collapsible Group Item #1
+                                            </button>
+                                        </h2>
+                                    </div>
+                                
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <ul>
+                                                <li>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+                                                        <path d="M21 12l-6.293-6.293a1 1 0 0 1 1.414-1.414l8 8a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414-1.414L21 12z"/>
+                                                    </svg>
+                                                    Week 0 Course Introduction
+                                                </li>
+                                                <li>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+                                                        <path d="M21 12l-6.293-6.293a1 1 0 0 1 1.414-1.414l8 8a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414-1.414L21 12z"/>
+                                                    </svg>
+                                                    Week 0 Course Introduction
+                                                </li>
+                                                <li>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+                                                        <path d="M21 12l-6.293-6.293a1 1 0 0 1 1.414-1.414l8 8a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414-1.414L21 12z"/>
+                                                    </svg>
+                                                    Week 0 Course Introduction
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="single-widget">
+                            <h4 class="widget-title">Course Projects</h4>
+                            <div class="accordion" id="accordionExample">
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Collapsible Group Item #1
+                                            </button>
+                                        </h2>
+                                    </div>
+                                
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <ul>
+                                                <li>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+                                                        <path d="M21 12l-6.293-6.293a1 1 0 0 1 1.414-1.414l8 8a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414-1.414L21 12z"/>
+                                                    </svg>
+                                                    Week 0 Course Introduction
+                                                </li>
+                                                <li>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+                                                        <path d="M21 12l-6.293-6.293a1 1 0 0 1 1.414-1.414l8 8a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414-1.414L21 12z"/>
+                                                    </svg>
+                                                    Week 0 Course Introduction
+                                                </li>
+                                                <li>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+                                                        <path d="M21 12l-6.293-6.293a1 1 0 0 1 1.414-1.414l8 8a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414-1.414L21 12z"/>
+                                                    </svg>
+                                                    Week 0 Course Introduction
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <h4 class="widget-title">যারা ক্লাস নেবেন</h4>
+                        <div class="single-widget">
+                            <div class="class_teacher_wrap">
+                                <img src="user.webp" alt="user" width="80">
+                                <div class="">
+                                    <h6>Md Kamrul H.Shanto</h6>
+                                    <span>Managing Director, Dhaka Bank</span><br>
+                                    <span>Securities Limited</span><br>
+                                    <span>Monetary & Financial Systems, Principles of economics</span>
+                                </div>
+                            </div>
+                            <div class="class_teacher_wrap">
+                                <img src="user.webp" alt="user" width="80">
+                                <div class="">
+                                    <h6>Md Kamrul H.Shanto</h6>
+                                    <span>Managing Director, Dhaka Bank</span> <br>
+                                    <span>Securities Limited</span> <br>
+                                    <span>Monetary & Financial Systems, Principles of economics</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-5 col-sm-12 content-sidebar">
+                    <div class="right_sidebar">
+                        <div class="enroll_box">
+                            <strong>৳ 18000</strong>
+                            <button class="enrool_btn common_btn">Enrool Now</button>
+                        </div>
+    
+                        <div class="widget-wrap">
+                            <div class="single-widget">
+                                <h4 class="widget-title">Class Details</h4>
+                                <div class="class_details_box">
+                                    <img src="01.png" alt="college">
+                                    <div>
+                                        <strong>Start Date: </strong><br>
+                                        <span>13th May'23</span>
+                                    </div>
+                                </div>
+    
+                                <div class="class_details_box">
+                                    <img src="02.png" alt="calender">
+                                    <div>
+                                        <strong>Class Timings: </strong><br>
+                                        <span>09:00PM Saturday - Sunday</span>
+                                    </div>
+                                </div>
+    
+                                <div class="class_details_box extra_margin_bottom">
+                                    <img src="03.png" alt="faq">
+                                    <div>
+                                        <strong>Doubt Session: </strong><br>
+                                        <span>12:00 PM Saturday-Sunday</span>
+                                    </div>
+                                </div>
+    
+                                <h4 class="widget-title">Course Features</h4>
+                                <ul>
+                                    <li>
+                                        <div class="check-icon"> &#10003;</div> 
+                                        Python
+                                    </li>
+                                    <li>
+                                        <div class="check-icon"> &#10003;</div> 
+                                        Flask
+                                    </li>
+                                    <li>
+                                        <div class="check-icon"> &#10003;</div> 
+                                        Numpy
+                                    </li>
+                                    <li>
+                                        <div class="check-icon"> &#10003;</div> 
+                                        Pandas
+                                    </li>
+                                    <li>
+                                        <div class="check-icon"> &#10003;</div> 
+                                        Visualization
+                                    </li>
+                                    <li>
+                                        <div class="check-icon"> &#10003;</div> 
+                                        Databases
+                                    </li>
+                                    <li>
+                                        <div class="check-icon"> &#10003;</div> 
+                                        EDA
+                                    </li>
+                                    <li>
+                                        <div class="check-icon"> &#10003;</div> 
+                                        Linear Algebra
+                                    </li>
+                                    <li>
+                                        <div class="check-icon"> &#10003;</div> 
+                                        Statistic
+                                    </li>
+                                    <li>
+                                        <div class="check-icon"> &#10003;</div> 
+                                        Machine Learning
+                                    </li>
+                                    <li>
+                                        <div class="check-icon"> &#10003;</div> Deep Learning
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+    
+                        <div class="widget-wrap">
+                            <div class="single-widget">
+                                <h4 class="widget-title">Get In touch</h4>
+                                <p class="widget-title-desc">
+                                    Have a query about our courses? Get in touch with us and we will guide you through a new world of redefined learning.
+                                </p>
+    
+                                <form action="">
+                                    <div class="form-group">
+                                        <label for="">Full Name</label>
+                                        <input type="text" class="form-control" placeholder="Type your name...">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Email</label>
+                                        <input type="text" class="form-control" placeholder="Type your email...">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Mobile Number</label>
+                                        <input type="text" class="form-control" placeholder="Type your mobile number...">
+                                    </div>
+    
+                                    <button class="common_btn">Submit Now</button>
+                                </form>
+                            </div>
+                        </div>
+    
+                        <div class="contact">
+                            <h5>কিছু জানার আছে?</h5>
+                            <div class="contact-box common_btn">
+                                <i class="fa fa-phone-alt"></i>
+                                কল করুন 01979774117 নম্বরে
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+</body>
+</html>

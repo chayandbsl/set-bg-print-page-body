@@ -1,0 +1,213 @@
+
+/*start css for rockwell font*/
+@font-face {
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    font-family: 'Rockwell';
+    src: url('Rockwell.eot');
+    src: url('Rockwell.eot?#iefix') format('embedded-opentype'),
+        url('Rockwell.woff2') format('woff2'),
+        url('Rockwell.woff') format('woff'),
+        url('Rockwell.ttf') format('truetype');
+    
+}
+/*end css for rockwell font*/
+
+
+/*start css for Times New Roman font*/
+@font-face {
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    font-family: 'Times New Roman';
+    src: url('TimesNewRomanPSMT.eot');
+    src: url('TimesNewRomanPSMT.eot?#iefix') format('embedded-opentype'),
+        url('TimesNewRomanPSMT.woff2') format('woff2'),
+        url('TimesNewRomanPSMT.woff') format('woff'),
+        url('TimesNewRomanPSMT.ttf') format('truetype');    
+}
+/*end css for Times New Roman font*/
+
+
+
+/*start css for Lato font*/
+/*@font-face {
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+    font-family: 'Lato';
+    src: url('Lato-BoldItalic.eot');
+    src: url('Lato-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('Lato-BoldItalic.woff2') format('woff2'),
+        url('Lato-BoldItalic.woff') format('woff'),
+        url('Lato-BoldItalic.ttf') format('truetype');    
+}*/
+/*end css for Lato font*/
+
+
+p, div {
+	margin: 0;
+	padding: 0;
+}
+.clr {
+	margin: 0;
+	padding: 0;
+	clear: both;
+}
+img {
+	margin: 0;
+	padding: 0;
+	max-width: 100%;
+}
+body {
+    margin: 0;
+    padding: 0;
+	color: #000000;
+	font-size: 12px;
+	font-weight: 600;
+    font-family: 'Lato';
+}
+.main_container {
+	width: 100%;	
+	margin: auto;
+    max-width: 1000px;
+}
+.inner_container {	
+	max-width: 100%;
+    padding: 7% 6% 5%;
+	min-height: 500px;
+	position: relative;	
+}
+.main_bg {	
+	top: 0;
+	left: 0;
+	width: 100%;
+    position: absolute;
+	/*height: -webkit-fill-available;*/
+}
+
+
+/*start css for header.....................................*/
+.header {
+	position: relative;
+}
+.header_left {
+	width: 30%;
+	float: left;
+}
+.logo {
+	max-width: 60%;
+}
+.header_middle {
+	width: 40%;
+	float: left;
+	padding-top: 55px;
+}
+.title {	
+    margin: auto;
+    /*max-width: 95%;*/
+}
+.header_right {
+	width: 30%;
+	float: right;
+	text-align: right;
+}
+/*end css for header.....................................*/
+
+
+/*start css for main content.....................................*/
+.main_content {
+	clear: both;
+	position: relative;
+    text-align: center;
+}
+.presented_to {
+    color: #231f20;
+    font-size: 32px;    
+    padding-top: 10px;
+    padding-bottom: 5%;    
+    font-style: normal;
+    font-weight: normal;
+    font-family: 'Rockwell';    
+}
+.name_area {	
+    margin: auto;
+	color: #022735;
+    max-width: 55%;
+    font-size: 34px;
+    min-height: 41px;
+    font-style: normal;
+    padding-bottom: 5px;
+    font-weight: bold;
+    font-family: 'Times New Roman';
+    border-bottom: 1px solid #3b4e57;
+}
+.comment {
+	color: #231f20;
+    font-size: 20px;
+    text-align: left;
+    line-height: 29px;
+    font-style: normal;
+    font-weight: normal;
+    padding: 20px 20px 0;
+    font-family: 'Times New Roman';
+}
+/*end css for main content.....................................*/
+
+
+/*start css for footer.....................................*/
+.footer {
+	clear: both;
+	display: flex;
+	padding-top: 9%;
+	position: relative;
+}
+.date_area {
+	width: 28%;
+    float: left;    
+    padding-left: 2%;
+    padding-top: 26px;
+    align-self: center;
+}
+.signature_area {
+	width: 30%;
+    float: left;
+    padding-top: 17px;
+    align-self: center;
+    text-align: center;
+}
+.signature {
+	min-height: 15px;	
+    margin-bottom: 5px;
+    position: relative;
+    padding-bottom: 5px;
+}
+.signature::after {
+    top: 21px;
+    left: 50%;    
+    height: 1px;
+    content: "";    
+    width: 112px;
+    margin-left: -20%;
+    position: absolute;
+    background-color: #898889;
+}
+.footer_logo {
+	width: 20%;
+    float: left;
+    text-align: right;
+    align-self: center;
+}
+.footer_logo img{
+	max-width: 70%;
+}
+.cirtified {
+	width: 20%;
+    float: left;
+    text-align: right;
+}
+.cirtified img{
+	max-width: 70%;
+}
+/*end css for footer.....................................*/
